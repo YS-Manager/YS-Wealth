@@ -8,3 +8,8 @@ def dasboard(request):
 
 def client_profile(request):
     return render(request, "client/pages-profile.html")
+
+
+
+def transations(request):
+    return render(request, "client/transations.html")
