@@ -1,0 +1,38 @@
+{% extends 'client/nbase.html' %}
+{% load static %}
+
+
+{% block title %}
+    Successfull
+{% endblock title %}
+
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'client/dist/css/success.css' %}">
+{% endblock css_files %}
+
+
+{% block content %}
+
+<div class=content>
+    <div class="wrapper-1">
+      <div class="wrapper-2">
+        <h1 class="suc">Thank you !</h1>
+        <p>Thanks for the withdraw request.  </p>
+        <p>Soon we wil contact you.  </p>
+        <a href="{% url 'home' %}">
+            <button class="go-home">
+                go home
+                </button>
+        </a>
+      </div>
+      <div class="footer-like">
+        {% comment %} <p>Email not received?
+         <a href="#">Click here to send again</a>
+        </p> {% endcomment %}
+      </div>
+    </div>
+</div>
+
+{% endblock content %}
+

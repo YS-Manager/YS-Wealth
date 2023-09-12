@@ -18,18 +18,21 @@
             <div class="row g-5">
                 <div class="col-lg-6 mx-auto wow fadeIn" data-wow-delay="0.1s">
                     <h1 class="display-5 mb-4">Please Login Here</h1>
-                    <form>
+                    <form action="{% url 'log-in' %}" method="POST">
+                        {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" name="username" placeholder="Subject">
                                     <label for="subject">Username</label>
+                                    {% comment %} <ul style="color:red;">{{ form.errors }}</li> {% endcomment %}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="password" class="form-control" id="subject" name="password" placeholder="Subject">
                                     <label for="message">Password</label>
+                                    {% comment %} <ul style="color:red;">{{ field.errors }}</li> {% endcomment %}
                                 </div>
                             </div>
                             <div class="col-12">

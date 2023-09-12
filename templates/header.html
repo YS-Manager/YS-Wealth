@@ -2,9 +2,8 @@
 
 
 <!-- Spinner Start -->
-<div id="spinner"
-class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-<div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
 </div>
 <!-- Spinner End -->
 
@@ -23,7 +22,7 @@ class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-5
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-    <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+    <a href="#" class="navbar-brand ms-4 ms-lg-0">
         <h1 class="display-5 text-primary m-0">YS-Wealth</h1>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
@@ -34,11 +33,15 @@ class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-5
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
             <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-            <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
-            <a href="{% url 'dash-board' %}" class="nav-item nav-link">Teams</a>
-            <a href="{% url 'dash-board' %}" class="nav-item nav-link" >YS-Stock</a>
+            {% comment %} <a href="{% url 'service' %}" class="nav-item nav-link">Services</a> {% endcomment %}
+            <a href="{% url 'team' %}" class="nav-item nav-link">Teams</a>
+            <a href="{% url 'dash-board' %}" class="nav-item nav-link">YS-Stock</a>
             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
-            <a href="{% url 'log-in' %}" class="nav-item nav-link">Login</a>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'log-out' %}" class="nav-item nav-link">Logout</a>
+            {% else %}
+                <a href="{% url 'log-in' %}" class="nav-item nav-link">Login</a>
+            {% endif %}
             <a href="{% url 'sign-up' %}" class="nav-item nav-link">Signup</a>
         </div>
         <div class="d-none d-lg-flex ms-2">

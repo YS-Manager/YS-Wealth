@@ -1,4 +1,4 @@
-{% extends 'client/base.html' %}
+{% extends 'client/nbase.html' %}
 {% load static %}
 
 
@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Investment Sum</h4>
-                        <span class="badge fs-3 bg-success">50000</span>
+                        <span class="badge fs-3 bg-success">{{ investment.invest_amount }}</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Current Value</h4>
-                        <span class="badge fs-3 bg-success">59000</span>
+                        <span class="badge fs-3 bg-success">{{ investment.current_value }}</span>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Returns</h4>
-                        <span class="badge fs-3 bg-success">+5.4%</span>
+                        <span class="badge fs-3 bg-success">+{{ investment.returns }} %</span>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Profit/Loss</h4>
-                        <span class="badge fs-3 bg-success">9000</span>
+                        <span class="badge fs-3 bg-success">{{ investment.profit_loss }}</span>
                     </div>
                 </div>
             </div>
@@ -48,23 +48,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="d-md-flex align-items-center">
-                            <div>
-                                <h4 class="card-title">Sales Summary</h4>
-                                <h6 class="card-subtitle">Ample admin Vs Pixel admin</h6>
-                            </div>
-                            <div class="ms-auto d-flex no-block align-items-center">
-                                <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
-                                    <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
-                                    </li>
-                                    <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="card-body mt-0">
                         <div class="amp-pxl mt-4" style="height: 350px;">
-                            <div class="chartist-tooltip"></div>
+                            <div class="">{{ chart|safe }}</div>
                         </div>
                     </div>
                 </div>
@@ -88,104 +74,33 @@
                             <table class="table mb-0 table-hover align-middle text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th class="border-top-0">Products</th>
-                                        <th class="border-top-0">License</th>
-                                        <th class="border-top-0">Support Agent</th>
-                                        <th class="border-top-0">Technology</th>
-                                        <th class="border-top-0">Tickets</th>
-                                        <th class="border-top-0">Sales</th>
-                                        <th class="border-top-0">Earnings</th>
+                                        <th class="border-top-0">Stocks Name</th>
+                                        <th class="border-top-0">Qty</th>
+                                        <th class="border-top-0">Total Stock</th>
+                                        <th class="border-top-0">DP Value</th>
+                                        <th class="border-top-0">Close Rate</th>
+                                        <th class="border-top-0">Collateral Value</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="m-r-10"><a
-                                                        class="btn btn-circle d-flex btn-info text-white">EA</a>
+                                    {% for stock in stocks %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">{{ stock.stock_name }}</h4>
+                                                    </div>
                                                 </div>
-                                                <div class="">
-                                                    <h4 class="m-b-0 font-16">Elite Admin</h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Single Use</td>
-                                        <td>John Doe</td>
-                                        <td>
-                                            <label class="badge bg-danger">Angular</label>
-                                        </td>
-                                        <td>46</td>
-                                        <td>356</td>
-                                        <td>
-                                            <h5 class="m-b-0">$2850.06</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="m-r-10"><a
-                                                        class="btn btn-circle d-flex btn-orange text-white">MA</a>
-                                                </div>
-                                                <div class="">
-                                                    <h4 class="m-b-0 font-16">Monster Admin</h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Single Use</td>
-                                        <td>Venessa Fern</td>
-                                        <td>
-                                            <label class="badge bg-info">Vue Js</label>
-                                        </td>
-                                        <td>46</td>
-                                        <td>356</td>
-                                        <td>
-                                            <h5 class="m-b-0">$2850.06</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="m-r-10"><a
-                                                        class="btn btn-circle d-flex btn-success text-white">MP</a>
-                                                </div>
-                                                <div class="">
-                                                    <h4 class="m-b-0 font-16">Material Pro Admin</h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Single Use</td>
-                                        <td>John Doe</td>
-                                        <td>
-                                            <label class="badge bg-success">Bootstrap</label>
-                                        </td>
-                                        <td>46</td>
-                                        <td>356</td>
-                                        <td>
-                                            <h5 class="m-b-0">$2850.06</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="m-r-10"><a
-                                                        class="btn btn-circle d-flex btn-purple text-white">AA</a>
-                                                </div>
-                                                <div class="">
-                                                    <h4 class="m-b-0 font-16">Ample Admin</h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>Single Use</td>
-                                        <td>John Doe</td>
-                                        <td>
-                                            <label class="badge bg-purple">React</label>
-                                        </td>
-                                        <td>46</td>
-                                        <td>356</td>
-                                        <td>
-                                            <h5 class="m-b-0">$2850.06</h5>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td>{{ stock.dp }}</td>
+                                            <td>{{ stock.total_stock }}</td>
+                                            <td>{{ stock.dp_value }}</td>
+                                            <td>
+                                                <label class="badge bg-info">{{ stock.close_rate }}</label>
+                                            </td>
+                                            <td>{{ stock.collateral_value }}</td>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>

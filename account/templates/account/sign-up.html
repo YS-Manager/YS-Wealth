@@ -21,36 +21,37 @@
         <div class="row g-5">
             <div class="col-lg-6 mx-auto wow fadeIn" data-wow-delay="0.1s">
                 <h1 class="display-5 mb-4">Please SignUp Here</h1>
-                <form>
+                <form action="{% url 'sign-up' %}" method="POST">
+                    {% csrf_token %}
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                <label for="name">First Name</label>
+                                {{ form.first_name }}
+                                <label for="first name">First Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                <label for="email">Last Name</label>
+                                {{ form.last_name }}
+                                <label for="last name">Last Name</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Email</label>
+                                {{ form.username }}
+                                <label for="username">Username</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Password</label>
+                                {{ form.password }}
+                                <label for="password">Password</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Confirm Password</label>
+                                {{ form.confirm_password }}
+                                <label for="confirm_password">Confirm Password</label>
                             </div>
                         </div>
                         <div class="col-12">

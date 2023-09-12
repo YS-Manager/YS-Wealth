@@ -1,0 +1,50 @@
+{% extends 'client/nbase.html' %}
+{% load static %}
+
+
+{% block title %}
+    Withdraw
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 col-xlg-9 col-md-7 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal form-material mx-2" method="POST" action="{% url 'withdraw' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                <label class="col-md-6"> Userame</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="{{ request.user.username }}"
+                                        class="form-control form-control-line" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-md-6">Withdraw Amount</label>
+                                <div class="col-md-12">
+                                    <input type="text" placeholder="amount"
+                                        class="form-control form-control-line" name="amount">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success text-white">Withdraw</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+</div>
+
+{% endblock content %}
